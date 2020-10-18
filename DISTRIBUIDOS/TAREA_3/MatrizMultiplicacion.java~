@@ -120,10 +120,10 @@ public static void main(String [] args) throws Exception {
             }
         }
 
-        System.out.println("El checksum es de: " + checksum);
+        System.out.println("The checksum is: " + checksum);
 
         if (n != 4) return;
-        System.out.println("La matriz C es: ");
+
         for (int i = 0; i < n; ++i){
             for (int j = 0; j < n; ++j){
                 System.out.print(C[i][j] + " ");
@@ -139,7 +139,7 @@ public static void main(String [] args) throws Exception {
         
         // Aceptar los nodos
         Worker [] workers = new Worker[4];
-        System.out.println("Server iniciando.........");
+
         for (int i = 0; i < NODES; ++i){
             workers[i] = new Worker(server.accept(), i);
             workers[i].start();
