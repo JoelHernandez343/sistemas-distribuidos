@@ -1,7 +1,8 @@
 # sistemas-distribuidos
-Comenzando 🚀
+##Comenzando 🚀
 Este repositorio es en colaboracion con mis amigos de 
-ESCOM <3 
+ESCOM :cupid: 
+##Estudiantes de ESCOM :student:
 
 
 2020 Sistemas Distribuidos
