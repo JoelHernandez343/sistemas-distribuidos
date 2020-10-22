@@ -32,7 +32,7 @@ public class MatrixMultiplication2 {
 
         // Transpose matrix B
         for (int i = 0; i < N; ++i){
-            for (int j = 0; j < N; ++j){
+            for (int j = i + 1; j < N; ++j){
                 int x = B[i][j];
                 B[i][j] = B[j][i];
                 B[j][i] = x;
