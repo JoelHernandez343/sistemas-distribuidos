@@ -1,0 +1,12 @@
+maquinas virtuales.
+usuario: Elias0
+password: Doritosdiablo129
+
+maquina0: 23.98.149.207
+	40.84.157.202
+	104.210.214.89
+	104.214.97.152
+
+ssh Elias@
+sudo apt update && sudo apt install openjdk-11-jdk -y
+ rm *
