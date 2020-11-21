@@ -42,16 +42,28 @@ public class ClientRMI {
 
         initializeMatrix();
 
-        Worker[] workers = new Worker[4];
+        for (int node = 0; node < NODES; ++node){
+            String ip = args[node + 1];
+            String url = "rmi://" + ip + "/prueba";
 
-        for (int i = 0; i < NODES; ++i) {
-            workers[i] = new Worker(args[i + 1], i);
-            workers[i].start();
+            InterfaceRMI remote = (InterfaceRMI) Naming.lookup(url);
+
+            int a = node == 0 || node == 1 ? 0 : 1;
+            int b = node == 0 || node == 2 ? 0 : 1;
+
+            Cs[node] = remote.multiplica_matrices(As[a], Bs[b]);
         }
 
-        for (int i = 0; i < NODES; ++i) {
-            workers[i].join();
-        }
+        // Worker[] workers = new Worker[4];
+
+        // for (int i = 0; i < NODES; ++i) {
+        //     workers[i] = new Worker(args[i + 1], i);
+        //     workers[i].start();
+        // }
+
+        // for (int i = 0; i < NODES; ++i) {
+        //     workers[i].join();
+        // }
 
         showResults();
     }
