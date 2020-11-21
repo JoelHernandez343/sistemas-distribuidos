@@ -2,7 +2,7 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class ServerRMI {
+public class ServidorRMI {
     static int N, PORT;
 
     static class ClassRMI extends UnicastRemoteObject implements InterfaceRMI {
