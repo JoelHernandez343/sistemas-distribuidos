@@ -1,0 +1,7 @@
+Elias
+DoritosDiablo123456
+
+Cliente:
+ClienteRMI <size> <ip_node_0:port> <ip_node_1:port> <ip_node_2:port> <ip_node_3:port>
+Servidor:
+ServerRMI <size> <port>
