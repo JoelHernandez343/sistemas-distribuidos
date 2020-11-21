@@ -2,8 +2,7 @@
 import java.io.*;
 import java.net.*;
 
-class Pi
-{
+public class Pi{
     static Object lock = new Object();
     static double pi = 0;
     static class Worker extends Thread{
