@@ -152,8 +152,6 @@ rm -f -r $CATALINA_HOME/webapps/Servicio
 cp Servicio.war $CATALINA_HOME/webapps
 cd ../
 mv usuario_sin_foto.png $CATALINA_HOME/webapps/ROOT/
-mv WSClient.js $CATALINA_HOME/webapps/ROOT/
-mv prueba.html $CATALINA_HOME/webapps/ROOT/
 sh $CATALINA_HOME/bin/catalina.sh start > /dev/null
 stop_spinner $? '🎉'
 printf "\n   Tomcat server is running at port 8080. Stop with ${CATALINA_HOME}/bin/catalina.sh stop\n"
