@@ -39,20 +39,19 @@ public class ClientRMI {
 
     public static void main(String[] args) throws Exception {
 
-        IniMatriz();
-
-        Worker[] workers = new Worker[4];
+        iniMatriz();
+         Worker[] workers = new Worker[4];
 
         for (int i = 0; i < NODES; ++i) {
             workers[i] = new Worker(args[i + 1], i);
-            workers[i].start();
-        }
+             workers[i].start();
+         }
 
         for (int i = 0; i < NODES; ++i) {
             workers[i].join();
-        }
+         }
 
-        verMatriz();
+        verResultado();
     }
 
     static int[][] parte_matriz(int[][] A, int inicio) {
@@ -69,7 +68,7 @@ public class ClientRMI {
                 C[i + renglon][j + columna] = A[i][j];
     }
 
-    static void IniMatriz() {
+    static void iniMatriz() {
         A = new int[N][N];
         B = new int[N][N];
         C = new int[N][N];
@@ -99,7 +98,7 @@ public class ClientRMI {
             }
         }
 
-        // Matriz transpuesta B
+        // Matriz Transpuerta
         for (int i = 0; i < N; ++i) {
             for (int j = i + 1; j < N; ++j) {
                 int x = B[i][j];
@@ -115,7 +114,7 @@ public class ClientRMI {
         Bs[1] = parte_matriz(B, N / 2);
     }
 
-    static void verMatriz() {
+    static void verResultado() {
 
         acomoda_matriz(C, Cs[0], 0, 0);
         acomoda_matriz(C, Cs[1], 0, N / 2);
@@ -130,7 +129,7 @@ public class ClientRMI {
             }
         }
 
-        System.out.println("El checksum es: " + checksum);
+        System.out.println("The checksum is: " + checksum);
 
         if (N != 4) {
             return;
@@ -143,11 +142,5 @@ public class ClientRMI {
             }
             System.out.println("");
         }
-    }
-
-    static boolean validateIpv4(final String ip) {
-        String pattern = "^((0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)\\.){3}(0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?):\\d+$";
-
-        return ip.matches(pattern);
     }
 }
