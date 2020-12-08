@@ -1,6 +1,6 @@
 //Modelo.java
 public class Modelo{
-    public ResponseModel(int responseCode, String message) {
+    public Modelo(int responseCode, String message) {
         this.responseCode = responseCode;
         this.message = message;
     }

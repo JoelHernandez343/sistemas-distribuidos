@@ -2,11 +2,11 @@
 import java.io.*;
 import java.net.*;
 
-public class GenericServices {
-    public GenericServices() {}
-    public String ip="12.213.213.3";
+public class Ayuda {
+    public Ayuda() {}
+    static String ip="12.213.213.3";
 
-    static ResponseModel hacerConsulta(String cuerpo, String metodo, String endpoint, String parametro) {
+    static Modelo hacerConsulta(String cuerpo, String metodo, String endpoint, String parametro) {
         try {
             URL url = new URL(URL_MAQUINA + endpoint);
             HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
@@ -24,7 +24,7 @@ public class GenericServices {
             }
 
             if(conexion.getResponseCode() != HttpURLConnection.HTTP_OK)
-                return new ResponseModel(400, "{message: 'No encontrado'}");
+                return new Modelo(400, "{message: 'No encontrado'}");
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conexion.getInputStream()));
             String respuestaServidor;
@@ -32,10 +32,10 @@ public class GenericServices {
             while((respuestaServidor = br.readLine()) != null) respuesta += respuestaServidor;
             conexion.disconnect();
 
-            return new ResponseModel(conexion.getResponseCode(), respuesta);
+            return new Modelo(conexion.getResponseCode(), respuesta);
         } catch(Exception e) { e.printStackTrace(); }
 
-        return new ResponseModel(404, "No encontrado");
+        return new Modelo(404, "No encontrado");
     }
 
     private final static String URL_MAQUINA = "http://"+ip+":8080/Servicio/rest/ws/";

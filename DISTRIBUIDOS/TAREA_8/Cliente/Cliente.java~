@@ -7,9 +7,6 @@ import java.util.Scanner;
 public class Cliente {
     public Cliente(){}
     
-    
-    
-
     protected char mostrarMenu(){
         Scanner s=new Scanner(System.in);
         System.out.println("Que accion desea realizar");
@@ -35,7 +32,7 @@ public class Cliente {
                 BorrarUsuario();
                 break;
             case 'd':
-                BorrarTodo();
+                BorrarTodos();
                 break;
             case 'e':
                 System.exit(0);
@@ -53,9 +50,9 @@ public class Cliente {
 
         try {
             Usuario usuario = new Usuario();
-            usuario = UsuarioUtils.crearUsuario(usuario);
+            usuario = UtilidadesUsuario.crearUsuario(usuario);
             String cuerpo = gson.toJson(usuario);
-            ResponseModel response = GenericServices.hacerConsulta(cuerpo, POST_METHOD, "alta", "usuario");
+            Modelo response = Ayuda.hacerConsulta(cuerpo, POST_METHOD, "alta", "usuario");
             if(response.getResponseCode() != 400) {
                 System.out.println(response.getMessage());
             } else {
@@ -69,8 +66,8 @@ public class Cliente {
         Gson gson = new Gson();
 
         try {
-            String cuerpo = UsuarioUtils.leerEmail();
-            ResponseModel response = GenericServices.hacerConsulta(cuerpo, GET_METHOD, "consulta", "email");
+            String cuerpo = UtilidadesUsuario.leerEmail();
+            Modelo response = Ayuda.hacerConsulta(cuerpo, GET_METHOD, "consulta", "email");
 
             if(response.getResponseCode() != 400) {
                 Usuario usuario = gson.fromJson(response.getMessage(), Usuario.class);
@@ -86,8 +83,8 @@ public class Cliente {
         Gson gson = new Gson();
 
         try {
-            String cuerpo = UsuarioUtils.leerEmail();
-            ResponseModel response = GenericServices.hacerConsulta(cuerpo, POST_METHOD, "borra", "email");
+            String cuerpo = UtilidadesUsuario.leerEmail();
+            Modelo response = Ayuda.hacerConsulta(cuerpo, POST_METHOD, "borra", "email");
 
             if(response.getResponseCode() != 400) {
                 System.out.println(response.getMessage());
@@ -102,7 +99,7 @@ public class Cliente {
         Gson gson = new Gson();
 
         try {
-            ResponseModel response = GenericServices.hacerConsulta("", POST_METHOD, "borrar", "");
+            Modelo response = Ayuda.hacerConsulta("", POST_METHOD, "borrar", "");
             if(response.getResponseCode() != 400) {
                 System.out.println(response.getMessage());
             } else {
@@ -114,6 +111,5 @@ public class Cliente {
 
     private final String POST_METHOD = "POST";
     private final String GET_METHOD = "GET";
-}
 }
 
