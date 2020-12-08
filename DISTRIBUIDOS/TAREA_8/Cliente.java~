@@ -1,0 +1,22 @@
+//Cliente.java
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import java.io.*;
+import java.util.Scanner;
+
+public class Cliente {
+    protected char mostrarMenu(){
+        Scanner s=new Scanner(System.in);
+        System.out.println("Que accion desea realizar");
+        System.out.println("a. Alta usuario");
+        System.out.println("b. Consulta usuario");
+        System.out.println("c. Borra usuario");
+        System.out.println("d. Borra todos los usuarios");
+        System.out.println("e. Salir");
+
+        char seleccion = s.nextLine().charAt(0);
+
+        return seleccion;
+    }
+}
+
