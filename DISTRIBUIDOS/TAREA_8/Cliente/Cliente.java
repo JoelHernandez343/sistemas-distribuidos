@@ -98,7 +98,7 @@ public class Cliente {
         Gson gson = new Gson();
 
         try {
-            Modelo response = Ayuda.hacerConsulta("", POST_METHOD, "borrar", "");
+            Modelo response = Ayuda.hacerConsulta("", POST_METHOD, "borrar_todo", "");
             if(response.getResponseCode() != 400) {
                 System.out.println(response.getMessage());
             } else {

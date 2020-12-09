@@ -4,7 +4,10 @@ import java.net.*;
 
 public class Ayuda {
     public Ayuda() {}
-    static String ip="12.213.213.3";
+    private final static String URL_MAQUINA = "http://"+ip+":8080/Servicio/rest/ws/";
+    private final static String REQUEST_KEY = "Content-Type";
+    private final static String VALUE_KEY = "application/x-www-form-urlencoded";
+    static String ip="104.214.69.140";
 
     static Modelo hacerConsulta(String cuerpo, String metodo, String endpoint, String parametro) {
         try {
@@ -37,8 +40,4 @@ public class Ayuda {
 
         return new Modelo(404, "No encontrado");
     }
-
-    private final static String URL_MAQUINA = "http://"+ip+":8080/Servicio/rest/ws/";
-    private final static String REQUEST_KEY = "Content-Type";
-    private final static String VALUE_KEY = "application/x-www-form-urlencoded";
 }
