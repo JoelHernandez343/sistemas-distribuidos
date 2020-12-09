@@ -1,6 +1,6 @@
 import java.rmi.Naming;
 
-public class ClientRMI {
+public class ClienteRMI {
     static int N;
     static int NODES = 4;
 
@@ -39,6 +39,7 @@ public class ClientRMI {
 
     public static void main(String[] args) throws Exception {
 
+<<<<<<< HEAD:DISTRIBUIDOS/TAREA_6/ClientRMI.java
         iniMatriz();
          Worker[] workers = new Worker[4];
 
@@ -50,6 +51,20 @@ public class ClientRMI {
         for (int i = 0; i < NODES; ++i) {
             workers[i].join();
          }
+=======
+        IniMatriz();
+        for (int node = 0; node < NODES; ++node){
+            String ip = args[node + 1];
+            String url = "rmi://" + ip + "/prueba";
+
+            InterfaceRMI remote = (InterfaceRMI) Naming.lookup(url);
+
+            int a = node == 0 || node == 1 ? 0 : 1;
+            int b = node == 0 || node == 2 ? 0 : 1;
+
+            Cs[node] = remote.multiplica_matrices(As[a], Bs[b]);
+        }
+>>>>>>> ok:DISTRIBUIDOS/TAREA_6/ClienteRMI.java
 
         verResultado();
     }
@@ -143,4 +158,8 @@ public class ClientRMI {
             System.out.println("");
         }
     }
+<<<<<<< HEAD:DISTRIBUIDOS/TAREA_6/ClientRMI.java
 }
+=======
+}
+>>>>>>> ok:DISTRIBUIDOS/TAREA_6/ClienteRMI.java
