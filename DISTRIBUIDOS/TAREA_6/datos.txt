@@ -1,7 +1,17 @@
-Elias
-DoritosDiablo123456
-
 Cliente:
 ClienteRMI <size> <ip_node_0:port> <ip_node_1:port> <ip_node_2:port> <ip_node_3:port>
 Servidor:
 ServerRMI <size> <port>
+
+Elias
+DoritosDiablo123456
+Maquina0
+104.214.24.63
+Maquina1
+Elias1
+104.214.32.59
+Maquina2
+13.66.1.138
+Maquina3
+13.66.23.184
+

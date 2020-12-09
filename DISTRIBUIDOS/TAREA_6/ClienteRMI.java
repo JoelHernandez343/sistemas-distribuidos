@@ -1,6 +1,6 @@
 import java.rmi.Naming;
 
-public class ClientRMI {
+public class ClienteRMI {
     static int N;
     static int NODES = 4;
 
@@ -40,16 +40,16 @@ public class ClientRMI {
     public static void main(String[] args) throws Exception {
 
         IniMatriz();
+        for (int node = 0; node < NODES; ++node){
+            String ip = args[node + 1];
+            String url = "rmi://" + ip + "/prueba";
 
-        Worker[] workers = new Worker[4];
+            InterfaceRMI remote = (InterfaceRMI) Naming.lookup(url);
 
-        for (int i = 0; i < NODES; ++i) {
-            workers[i] = new Worker(args[i + 1], i);
-            workers[i].start();
-        }
+            int a = node == 0 || node == 1 ? 0 : 1;
+            int b = node == 0 || node == 2 ? 0 : 1;
 
-        for (int i = 0; i < NODES; ++i) {
-            workers[i].join();
+            Cs[node] = remote.multiplica_matrices(As[a], Bs[b]);
         }
 
         verMatriz();
@@ -143,11 +143,5 @@ public class ClientRMI {
             }
             System.out.println("");
         }
-    }
-
-    static boolean validateIpv4(final String ip) {
-        String pattern = "^((0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)\\.){3}(0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?):\\d+$";
-
-        return ip.matches(pattern);
     }
 }
