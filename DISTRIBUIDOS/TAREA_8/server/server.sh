@@ -39,11 +39,11 @@ echo "Configuring MySQL:\n"
 echo "Please enter 'root' as root's password and 'hugo' as hugo password\n"
 sudo mysql_secure_installation
 sudo mysql < sudo.sql
-echo "Enter root's password: (root)\n"
+echo " Enter root's password: (root)\n"
 mysql -u root -p < root.sql
-echo"Enter hugo's password: (hugo)\n"
+echo " Enter hugo's password: (hugo)\n"
 mysql -u hugo -p < db.sql
-echo "   🟢 Configured MySQL\n"
+echo "Configured MySQL\n"
 
 echo 'Iniciando la aplicacion'
 unzip -qq Servicio.zip
