@@ -56,9 +56,9 @@ public class Servicio
   @Path("alta")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
   @Produces(MediaType.APPLICATION_JSON)
-  public Response alta_usuario(@FormParam("usuario") String usuario) throws Exception
+  public Response alta_usuario(@FormParam("usuario") String user) throws Exception
   {
-  	Usuario usuario = j.fromJson(user,Usuario.class);
+  	Usuario usuario = j.fromJson(user, Usuario.class);
     Connection conexion = pool.getConnection();
 
     if (usuario.email == null || usuario.email.equals(""))
@@ -138,6 +138,7 @@ public class Servicio
     }
     return Response.ok().build();
   }
+
 
   @POST
   @Path("consulta")
