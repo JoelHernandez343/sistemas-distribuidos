@@ -39,6 +39,7 @@ public class ClienteRMI {
 
     public static void main(String[] args) throws Exception {
 
+<<<<<<< HEAD:DISTRIBUIDOS/TAREA_6/ClienteRMI.java
         IniMatriz();
         for (int node = 0; node < NODES; ++node){
             String ip = args[node + 1];
@@ -49,10 +50,36 @@ public class ClienteRMI {
             int a = node == 0 || node == 1 ? 0 : 1;
             int b = node == 0 || node == 2 ? 0 : 1;
 
+=======
+<<<<<<< HEAD:DISTRIBUIDOS/TAREA_6/ClientRMI.java
+        iniMatriz();
+         Worker[] workers = new Worker[4];
+
+        for (int i = 0; i < NODES; ++i) {
+            workers[i] = new Worker(args[i + 1], i);
+             workers[i].start();
+         }
+
+        for (int i = 0; i < NODES; ++i) {
+            workers[i].join();
+         }
+=======
+        IniMatriz();
+        for (int node = 0; node < NODES; ++node){
+            String ip = args[node + 1];
+            String url = "rmi://" + ip + "/prueba";
+
+            InterfaceRMI remote = (InterfaceRMI) Naming.lookup(url);
+
+            int a = node == 0 || node == 1 ? 0 : 1;
+            int b = node == 0 || node == 2 ? 0 : 1;
+
+>>>>>>> 726392c:DISTRIBUIDOS/TAREA_6/ClientRMI.java
             Cs[node] = remote.multiplica_matrices(As[a], Bs[b]);
         }
+>>>>>>> ok:DISTRIBUIDOS/TAREA_6/ClienteRMI.java
 
-        verMatriz();
+        verResultado();
     }
 
     static int[][] parte_matriz(int[][] A, int inicio) {
@@ -69,7 +96,7 @@ public class ClienteRMI {
                 C[i + renglon][j + columna] = A[i][j];
     }
 
-    static void IniMatriz() {
+    static void iniMatriz() {
         A = new int[N][N];
         B = new int[N][N];
         C = new int[N][N];
@@ -99,7 +126,7 @@ public class ClienteRMI {
             }
         }
 
-        // Matriz transpuesta B
+        // Matriz Transpuerta
         for (int i = 0; i < N; ++i) {
             for (int j = i + 1; j < N; ++j) {
                 int x = B[i][j];
@@ -115,7 +142,7 @@ public class ClienteRMI {
         Bs[1] = parte_matriz(B, N / 2);
     }
 
-    static void verMatriz() {
+    static void verResultado() {
 
         acomoda_matriz(C, Cs[0], 0, 0);
         acomoda_matriz(C, Cs[1], 0, N / 2);
@@ -130,7 +157,7 @@ public class ClienteRMI {
             }
         }
 
-        System.out.println("El checksum es: " + checksum);
+        System.out.println("The checksum is: " + checksum);
 
         if (N != 4) {
             return;
@@ -144,4 +171,12 @@ public class ClienteRMI {
             System.out.println("");
         }
     }
+<<<<<<< HEAD:DISTRIBUIDOS/TAREA_6/ClienteRMI.java
 }
+=======
+<<<<<<< HEAD:DISTRIBUIDOS/TAREA_6/ClientRMI.java
+}
+=======
+}
+>>>>>>> ok:DISTRIBUIDOS/TAREA_6/ClienteRMI.java
+>>>>>>> 726392c:DISTRIBUIDOS/TAREA_6/ClientRMI.java

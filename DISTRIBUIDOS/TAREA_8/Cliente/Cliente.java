@@ -5,7 +5,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 public class Cliente {
     public Cliente(){}
-
+    private final String POST_METHOD = "POST";
+    private final String GET_METHOD = "GET";
     protected char mostrarMenu(){
         Scanner s=new Scanner(System.in);
         System.out.println("Que accion desea realizar");
@@ -66,8 +67,7 @@ public class Cliente {
 
         try {
             String cuerpo = UtilidadesUsuario.leerEmail();
-            Modelo response = Ayuda.hacerConsulta(cuerpo, GET_METHOD, "consulta", "email");
-
+            Modelo response = Ayuda.hacerConsulta(cuerpo,GET_METHOD,"consulta","email");
             if(response.getResponseCode() != 400) {
                 Usuario usuario = gson.fromJson(response.getMessage(), Usuario.class);
                 System.out.println(usuario.toString());
@@ -107,8 +107,5 @@ public class Cliente {
             }
         } catch(Exception e) { e.printStackTrace(); }
     }
-
-    private final String POST_METHOD = "POST";
-    private final String GET_METHOD = "GET";
 }
 

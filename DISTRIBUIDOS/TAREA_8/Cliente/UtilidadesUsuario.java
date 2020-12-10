@@ -17,13 +17,13 @@ public class UtilidadesUsuario {
         System.out.println("Apellido Materno:");
         usuario.setApellidoMaterno(br.readLine());
 
-        System.out.println("Fecha de nacimiento:");
+        System.out.println("Fecha de nacimiento(YYYY-MM-DD):");
         usuario.setFechaNacimiento(br.readLine());
 
         System.out.println("Telefono:");
         usuario.setTelefono(br.readLine());
 
-        System.out.println("Genero:");
+        System.out.println("Genero:(M/F)");
         usuario.setGenero(br.readLine());
 
         return usuario;
@@ -35,6 +35,7 @@ public class UtilidadesUsuario {
 
         System.out.println("Introduce Email a consultar");
         email = br.readLine();
+        //System.out.println(email);
 
         return email;
     }

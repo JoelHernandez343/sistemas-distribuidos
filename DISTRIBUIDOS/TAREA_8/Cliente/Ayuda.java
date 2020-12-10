@@ -4,10 +4,9 @@ import java.net.*;
 
 public class Ayuda {
     public Ayuda() {}
-    private final static String URL_MAQUINA = "http://"+ip+":8080/Servicio/rest/ws/";
+    private final static String URL_MAQUINA = "http://104.215.100.225:8080/Servicio/rest/ws/";
     private final static String REQUEST_KEY = "Content-Type";
     private final static String VALUE_KEY = "application/x-www-form-urlencoded";
-    static String ip="104.214.69.140";
 
     static Modelo hacerConsulta(String cuerpo, String metodo, String endpoint, String parametro) {
         try {
@@ -31,11 +30,15 @@ public class Ayuda {
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conexion.getInputStream()));
             String respuestaServidor;
-            String respuesta = "";
-            while((respuestaServidor = br.readLine()) != null) respuesta += respuestaServidor;
+            String respuesta ="";
+            while((respuestaServidor = br.readLine()) != null) {
+            //System.out.println(respuestaServidor);
+            respuesta += respuestaServidor;
+            //System.out.println(respuesta);
+            }
+            System.out.println(conexion.getResponseCode());
             conexion.disconnect();
-
-            return new Modelo(conexion.getResponseCode(), respuesta);
+            return new Modelo(conexion.getResponseCode(),respuesta);
         } catch(Exception e) { e.printStackTrace(); }
 
         return new Modelo(404, "No encontrado");

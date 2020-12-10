@@ -2,7 +2,7 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class ServidorRMI {
+public class ServerRMI {
     static int N, PORT;
 
     static class ClassRMI extends UnicastRemoteObject implements InterfaceRMI {
@@ -22,6 +22,7 @@ public class ServidorRMI {
     }
 
     public static void main(String[] args) throws Exception {
+        
 
         String url = "rmi://localhost:" + PORT + "/prueba";
         System.out.println(url);
