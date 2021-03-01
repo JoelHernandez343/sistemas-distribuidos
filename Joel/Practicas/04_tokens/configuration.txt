@@ -1,0 +1,8 @@
+Máquina virtual:
+    Usuario: joel
+    Constraseña: Mazapan@1234
+
+Máquina 0: 13.68.251.175
+Máquina 1: 13.90.155.83
+Máquina 2: 40.76.92.254
+Máquina 3: 52.170.198.10
